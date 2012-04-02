@@ -1,0 +1,14 @@
+CHANGELOG
+	
+v 1.0:
+- Initial non-beta release
+- Added a few aliases to class methods
+
+v 1.1:
+- Added methods to read and reparse an email from a file.
+	
+v1.2:
+- First public release
+- Clarified many methods' parameters, so code hinting in some apps does not
+  just show "$a, $b" but a more descriptive "$recipient_name,$recipient_email"
+  
