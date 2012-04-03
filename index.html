@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Sendmail by jvjvjv</title>
+  </head>
+
+  <body>
+    <a id="forkme_banner" href="https://github.com/jvjvjv/Sendmail">Fork Me on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Sendmail</h1>
+            <h2>Handle text/HTML email creation and sending WITH GREAT EASE</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/jvjvjv/Sendmail/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/jvjvjv/Sendmail/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+      <span class="banner-fix"></span>
+
+      <section id="main_content">
+        <h2>I made this myself!</h2>
+
+<p>It's the first script I'm releasing publicly, and though many others have released their own versions of Mail Sending classes, I thought I'd give it a go. So, here I am.</p>
+
+<h2>Quick Example</h2>
+
+<p>Here's how I envisioned this being used.</p>
+
+<div class="highlight">
+<pre><span class="x">// Set up CSS</span>
+<span class="x">$css = &lt;&lt;&lt;CSS_FILE</span>
+<span class="x">h1 { font-family:Georgia,serif; font-size:24px; font-weight:normal; }</span>
+<span class="x">h2 { font-family:Georgia,serif; font-size:20px; font-weight:normal; }</span>
+<span class="x">p { font-family:Verdana,sans-serif; font-size:16px; }</span>
+
+<span class="x">CSS_FILE;</span>
+
+<span class="x">// Set up email parameters</span>
+<span class="x">$send = new tofSendMail( MSG_HTML + MSG_TXT );</span>
+<span class="x">$send-&gt;setSender ( $_POST['contactname'] , $_POST['contactemail'] );</span>
+<span class="x">$send-&gt;setReceiver ('Jason','jason@jasonvertucio.com');</span>
+<span class="x">$send-&gt;addBCC ('Facebook','jason@facebook.com');</span>
+<span class="x">$send-&gt;subject = "This is the email subject";</span>
+<span class="x">$send-&gt;css = $css;</span>
+
+<span class="x">// Load message from file, and set reparse file to include actual name</span>
+<span class="x">// whenever {$name} appears in the file</span>
+<span class="x">$html_message = $send-&gt;GetEmailFromFile ('thankyou.html');</span>
+<span class="x">$txt_message = $send-&gt;GetEmailFromFile ('thankyou.txt');</span>
+
+<span class="x">$send-&gt;text_message = $send-&gt;reparseMail ( $txt_message , array (</span>
+<span class="x">    'name' = &gt; $_POST['contactname'] ) );</span>
+<span class="x">$send-&gt;html_message = $send-&gt;reparseMail ( $html_message , array (</span>
+<span class="x">    'name' = &gt; $_POST['contactname'] ) );</span>
+
+<span class="x">// Actually send the email</span>
+<span class="x">$result = $send-&gt;send();</span>
+
+<span class="x">if ($result == TRUE) {</span>
+<span class="x">    echo "Achievement Unlocked: You have sent an email! (10gp)";</span>
+<span class="x">} else {</span>
+<span class="x">    echo "Utter failure. You lose! Good day, sir!";</span>
+</pre>
+</div>
+
+
+<h2>
+<em>Teux-deux</em> list.</h2>
+
+<p>(Yes I know, <a href="http://teuxdeux.com">teuxdeux</a> is already a website)</p>
+
+<ul>
+<li>Write better documentation</li>
+<li>Include examples</li>
+<li>Incorporate user feedback</li>
+<li>Fix bugs as reported by users</li>
+</ul><h2>Authors and Contributors</h2>
+
+<p>So far, it's just me. You know, <a href="/jvjvjv" class="user-mention">@jvjvjv</a>.</p>
+
+<h3>Support or Contact</h3>
+
+<p>If you have any issues using this, or suggestions to make this better, please let me know, <a href="http://jasonvertucio.com">http://jasonvertucio.com</a>.</p>
+      </section>
+
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/jvjvjv">jvjvjv</a> can be found on <a href="https://github.com/jvjvjv/Sendmail">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
+
+    </div>
+
+    
+  </body>
+</html>
